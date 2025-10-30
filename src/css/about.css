@@ -1,4 +1,4 @@
-body {
+.body {
       background-color: #121212;
       color: #f1f1f1;
       display: flex;
@@ -7,7 +7,7 @@ body {
       margin: 0;
     }
 
-    main {
+.main {
       flex: 1;
       display: flex;
       justify-content: center;
@@ -16,19 +16,19 @@ body {
       padding: 40px;
     }
 
-    h1 {
+.h1 {
       color: #00ffcc;
       margin-bottom: 20px;
     }
 
-    p {
+.p {
       max-width: 700px;
       font-size: 1.1rem;
       line-height: 1.6;
       margin: 0 auto;
     }
 
-    footer {
+.footer {
       background-color: #1c1c1c;
       text-align: center;
       padding: 15px 0;
@@ -37,11 +37,11 @@ body {
       border-top: 1px solid #333;
     }
 
-    footer a {
+footer a {
       color: #00ffcc;
       text-decoration: none;
     }
 
-    footer a:hover {
+footer a:hover {
       text-decoration: underline;
     }
