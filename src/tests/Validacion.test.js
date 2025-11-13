@@ -1,8 +1,8 @@
 // tests/validateLogin.test.js
 import Principal from '../pages/principal.jsx'; // o el componente que estés probando
-function validateLogin(username, password) {
-  if (!username || !password) return false;
-  return username === 'admin' && password === '1234';
+function validateLogin(correo, password) {
+  if (!correo || !password) return false;
+  return correo === 'admin' && password === '1234';
 }
 
 describe('Función validateLogin', () => {
