@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {
-  const [nombre, setNombre] = useState('')
+  const [correo, setCorreo] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
@@ -12,7 +12,7 @@ function Login() {
     const usuarioCorrecto = 'Javier Candia'
     const contrasenaCorrecta = '123456789'
 
-    if (nombre === usuarioCorrecto && password === contrasenaCorrecta) {
+    if (correo === usuarioCorrecto && password === contrasenaCorrecta) {
       alert('¡Bienvenido!')
       navigate('/principal') // redirige a la página principal
     } else {
@@ -28,15 +28,15 @@ function Login() {
 
       <form onSubmit={validarFormulario}>
         <div className="mb-3 text-start">
-          <label htmlFor="Nombre" className="form-label">Nombre</label>
+          <label htmlFor="Correo" className="form-label">Correo</label>
           <input
             type="text"
-            id="Nombre"
-            name="Nombre"
-            placeholder="Ingrese su nombre"
+            id="Correo"
+            name="Correo"
+            placeholder="Ingrese su correo"
             className="form-control"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
             required
           />
         </div>
