@@ -1,58 +1,40 @@
+import { useEffect, useState } from "react";
+import '../css/reseñas.css';// 👈 Importa el CSS
+
 function Reseñas() {
+  const [review, setReview] = useState([]);
+
+  useEffect(() => {
+    fetch("https://x8ki-letl-twmt.n7.xano.io/api:3L2D00wW/review")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Respuesta API:", data);
+        setReview(Array.isArray(data) ? data : []);
+      })
+      .catch((error) => {
+        console.error("Error al obtener reseñas:", error);
+      });
+  }, []);
+
   return (
-    <div>
-      {/* Encabezado */}
-      <header className="bg-dark text-white text-center py-5">
-        <h1 className="display-4">Reseñas de mis juegos favoritos</h1>
-        <p className="lead">Mis opiniones personales sobre los títulos que más disfruto</p>
-      </header>
-
-      {/* Contenido principal */}
-      <main className="container my-5">
-        <div className="row g-4">
-          
-          {/* Reseña de Clash Royale */}
-          <div className="col-md-4">
-            <div className="card h-100 shadow-sm p-3">
-              <h5 className="card-title text-center">Clash Royale</h5>
-              <p className="card-text mt-3">
-                Un juego de estrategia en tiempo real que combina la emoción de los duelos rápidos con la planificación de mazos.
-                Su equilibrio entre habilidad y táctica lo convierte en uno de los títulos móviles más adictivos.
-              </p>
+    <div className="reseñas-container">
+      <h1>Reseñas</h1>
+      <div className="reseñas-grid">
+        {review.length > 0 ? (
+          review.map((item) => (
+            <div key={item.id} className="reseña-card">
+              <h2 className="reseña-title">{item.name_game}</h2>
+              <h3>{item.score} ⭐</h3>
+              <p>{item.review_text}</p>
+              <h4>Autor: {item.author_name}</h4>
             </div>
-          </div>
-
-          {/* Reseña de Mortal Kombat */}
-          <div className="col-md-4">
-            <div className="card h-100 shadow-sm p-3">
-              <h5 className="card-title text-center">Mortal Kombat</h5>
-              <p className="card-text mt-3">
-                Uno de los juegos de lucha más emblemáticos, con combates intensos y un estilo visual inconfundible.
-                Su brutalidad y variedad de personajes lo hacen un clásico que sigue evolucionando con cada entrega.
-              </p>
-            </div>
-          </div>
-
-          {/* Reseña de Battlefield V */}
-          <div className="col-md-4">
-            <div className="card h-100 shadow-sm p-3">
-              <h5 className="card-title text-center">Battlefield V</h5>
-              <p className="card-text mt-3">
-                Con un enfoque cinematográfico y batallas masivas llenas de acción, Battlefield V ofrece una experiencia de guerra realista.
-                Su jugabilidad táctica y sus escenarios impresionantes lo hacen destacar dentro del género FPS.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 Mi Rincón del Juego | Todas las reseñas son opiniones personales.</p>
-      </footer>
+          ))
+        ) : (
+          <p>No hay reseñas disponibles.</p>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Reseñas
+export default Reseñas;
