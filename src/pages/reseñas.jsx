@@ -4,6 +4,15 @@ import '../css/reseñas.css';
 function Reseñas() {
   const [review, setReview] = useState([]);
 
+  // Estado para el formulario POST
+  const [nuevaReseña, setNuevaReseña] = useState({
+    review_text: "",
+    score: "",
+    author_name: "",
+    name_game: ""
+  });
+
+  // GET: obtener reseñas
   useEffect(() => {
     fetch("https://x8ki-letl-twmt.n7.xano.io/api:3L2D00wW/review")
       .then((response) => response.json())
@@ -15,6 +24,7 @@ function Reseñas() {
       });
   }, []);
 
+  // DELETE: eliminar reseña
   function eliminarReseña(id) {
     fetch(`https://x8ki-letl-twmt.n7.xano.io/api:3L2D00wW/review/${id}`, {
       method: "DELETE"
@@ -24,6 +34,35 @@ function Reseñas() {
       })
       .catch((error) => {
         console.error("Error al eliminar reseña:", error);
+      });
+  }
+
+  // POST: crear reseña
+  function crearReseña() {
+    fetch("https://x8ki-letl-twmt.n7.xano.io/api:3L2D00wW/review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ...nuevaReseña,
+        score: parseInt(nuevaReseña.score),
+        user_id: 1,
+        juego_id: 1
+      })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setReview(prev => [...prev, data]);
+        setNuevaReseña({
+          review_text: "",
+          score: "",
+          author_name: "",
+          name_game: ""
+        });
+      })
+      .catch((error) => {
+        console.error("Error al crear reseña:", error);
       });
   }
 
@@ -51,6 +90,51 @@ function Reseñas() {
         ) : (
           <p>No hay reseñas disponibles.</p>
         )}
+      </div>
+
+      {/* FORMULARIO PARA CREAR RESEÑA */}
+      <div className="formulario-container">
+        <h2>Agregar nueva reseña</h2>
+
+        <input
+          type="text"
+          placeholder="Nombre del juego"
+          value={nuevaReseña.name_game}
+          onChange={(e) =>
+            setNuevaReseña({ ...nuevaReseña, name_game: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="Texto de la reseña"
+          value={nuevaReseña.review_text}
+          onChange={(e) =>
+            setNuevaReseña({ ...nuevaReseña, review_text: e.target.value })
+          }
+        />
+
+        <input
+          type="text"
+          placeholder="Autor"
+          value={nuevaReseña.author_name}
+          onChange={(e) =>
+            setNuevaReseña({ ...nuevaReseña, author_name: e.target.value })
+          }
+        />
+
+        <input
+          type="number"
+          placeholder="Calificación"
+          value={nuevaReseña.score}
+          onChange={(e) =>
+            setNuevaReseña({ ...nuevaReseña, score: e.target.value })
+          }
+        />
+
+        <button className="boton-crear" onClick={crearReseña}>
+          Crear reseña
+        </button>
       </div>
     </div>
   );
