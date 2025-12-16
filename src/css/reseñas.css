@@ -1,80 +1,96 @@
 .reseñas-container {
-  background-color: #121212; /* fondo oscuro igual que About */
-  color: #f1f1f1;            /* texto claro */
+  background-color: #121212;
+  color: #f1f1f1;
   min-height: 100vh;
   padding: 40px;
-
-  /* 👇 ancho máximo del contenedor */
-  max-width: 1200px; 
-  margin: 0 auto; /* centra el contenido */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .reseñas-grid {
   display: flex;
-  flex-wrap: wrap; /* permite varias filas */
-  gap: 30px;       /* espacio entre tarjetas */
+  flex-wrap: wrap;
+  gap: 30px;
   justify-content: center;
 }
 
-/* TARJETA DE RESEÑA */
+/* TARJETA */
 .reseña-card {
-  background-color: #1c1c1c; /* fondo de cada caja */
-  color: #f1f1f1;            /* texto dentro de la caja */
+  background-color: #1c1c1c;
+  color: #f1f1f1;
   border: 1px solid #333;
   border-radius: 10px;
-
-  width: 500px;  
+  width: 500px;
   padding: 25px;
-
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
-
-  /* ANIMACIÓN */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
 
-/* EFECTO AL PASAR EL MOUSE */
 .reseña-card:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
 }
 
-/* TÍTULO */
 .reseña-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 15px;
   text-align: center;
-  color: #00ffcc; /* mismo color que About */
+  color: #00ffcc;
 }
 
-.reseña-card p,
-.reseña-card h3,
-.reseña-card h4 {
-  color: #f1f1f1; /* texto claro */
-}
-
-/* BOTÓN ELIMINAR (OCULTO POR DEFECTO) */
+/* BOTÓN ELIMINAR */
 .boton-eliminar {
   display: none;
   margin-top: 15px;
   padding: 12px 20px;
   border: none;
   border-radius: 25px;
-
-  /* MISMO ESTILO QUE EL BOTÓN "Sobre mí" */
   background: linear-gradient(to right, #ff0000, #ff9900);
   color: white;
   font-weight: bold;
   cursor: pointer;
-
   transition: opacity 0.3s ease;
 }
 
-/* MOSTRAR BOTÓN SOLO EN HOVER */
 .reseña-card:hover .boton-eliminar {
   display: block;
   opacity: 1;
+}
+
+/* FORMULARIO */
+.formulario-container {
+  margin-top: 50px;
+  background-color: #1c1c1c;
+  padding: 30px;
+  border-radius: 12px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.formulario-container input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.boton-crear {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(to right, #00ffcc, #0099ff);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
 }

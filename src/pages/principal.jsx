@@ -122,9 +122,13 @@ function App() {
           </button>
         </section>
 
-        <Link to="/reseñas" className="btn-reseñas">Ir a Reseñas</Link>
+        {/* 🔥 CAMBIO IMPORTANTE: este botón ahora lleva a /crear-reseña */}
+        <Link to="/crear-reseña" className="btn-reseñas">
+          Ir a Reseñas
+        </Link>
+
         <Link to="/about" className="btn-about">Sobre mí</Link>
-      </div> {/* ← AQUÍ SE CIERRA el div de principal-container */}
+      </div>
     </>
   );
 }

@@ -1,0 +1,62 @@
+/* CONTENEDOR GENERAL (fondo oscuro, centrado) */
+.reseñas-container {
+  background-color: #121212;
+  color: #f1f1f1;
+  min-height: 100vh;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* FORMULARIO GRANDE Y CENTRADO */
+.formulario-container {
+  margin-top: 50px;
+  background-color: #1c1c1c;
+  padding: 40px;
+  border-radius: 12px;
+  width: 600px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* TÍTULO DEL FORMULARIO */
+.formulario-container h2 {
+  text-align: center;
+  color: #00ffcc;
+  margin-bottom: 20px;
+}
+
+/* INPUTS */
+.formulario-container input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 16px;
+}
+
+/* BOTÓN CREAR */
+.boton-crear {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(to right, #00ffcc, #0099ff);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.boton-crear:hover {
+  transform: scale(1.03);
+}
